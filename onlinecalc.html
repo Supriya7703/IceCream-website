@@ -1,0 +1,250 @@
+ <html>
+		<head>
+		<title> Bill Calculator </title>
+			<link rel="stylesheet" href="web27.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("input").focus(function(){
+				$(this).css("background-color", "grey");
+			});
+			$("input").blur(function(){
+				$(this).css("background-color", "lightgrey");
+			});
+			$("input").hover(function(){
+				$(this).css("background-color","lightblue");
+			});
+			$("input").mouseleave(function(){
+				$(this).css("background-color","lightgrey");
+			});
+			$("button").click(function(){
+				$("p").addClass("blue");
+			});
+			$("button").hover(function(){
+				$(this).css("background-color","pink");
+			});
+			$("button").mouseleave(function(){
+				$(this).css("background-color","grey");
+			});
+			$("#click").click(function(){
+				$("#slide").slideToggle(2000);
+			});
+		});
+		</script>
+
+		</head>
+		
+		<body>
+		
+		<script type="text/javascript" src="web27.js"> </script>
+		
+		<h1><b> Online Shopping Bill Calculator </b></h1>
+		<br><br>
+		
+		<table style="width:40%" align="center" id="slide">
+		
+		<tr>
+			<th style="background-color:#F7DCB4" > Description </th>
+			<th style="background-color:#F7DCB4"> Amount </th>
+		</tr>
+		<tr>
+			<td> Item 1 Price: </td>
+			<td> <input type="number" id="item1"> </td>
+		</tr>
+		<tr>
+			<td> Item 2 Price: </td>
+			<td> <input type="number" id="item2"> </td>
+		</tr>                                 
+		<tr>                                  
+			<td> Item 3 Price: </td>          
+			<td> <input type="number" id="item3"> </td>
+		</tr>                                 
+		<tr>                                  
+			<td> Item 4 Price: </td>          
+			<td> <input type="number" id="item4"> </td>
+		</tr>
+		<tr>
+			<td> Total Amount:</td>
+			<td> <button type="button" onclick="itemTotal()">Item Total</button> <p id="demo"></p></td>
+		</tr>
+		<tr>
+			<td> Discount: </td>
+			<td> <button type="button" onclick="discountTotal()">Discount </button> <p id="demo1"></p></td>
+		</tr>
+		<tr>
+			<td>Amount after Discount: </td>
+			<td> <button type="button" onclick="afterDiscountTotal()">Total after Discount </button> <p id="demo2"></p> </td>
+		</tr>
+		<tr>
+			<td>SGST(5%): </td>
+			<td> <button type="button" onclick="sgstTotal()">SGST </button> <p id="demo3"></p></td>
+		</tr>
+		<tr>
+			<td>CGST(5%): </td>
+			<td > <button type="button" onclick="cgstTotal()">CGST </button><p id="demo4"></p> </td>
+		</tr>
+		<tr>
+			<td style="font-size:150%"> <b>FINAL AMOUNT: </b></td>
+			<td><button type="button" onclick="finalTotal()">Final Amount </button><p id="demo5"></p></td>
+		</tr>
+		
+		
+		</table>
+		
+		<div id="click" > <button type="button" > click </button> </div>
+		</body>
+</html>
+ table,th,td{
+	border: 1px solid black;
+	border-collapse:collapse;
+	padding:10px 10px;
+}
+table{
+	background-color:#985629;
+	border:none;
+	text-align:center;
+}
+input{
+	background-color:lightgrey;
+	border:none;
+	padding: 4px 4px;
+}
+button{
+	background-color:grey;
+	color:white;
+	border:none;
+	padding: 3px 3px;
+}
+h1{
+	text-align:center;
+	font-family:calibri;
+}
+.blue{
+	color:black;
+	background-color:orange;
+}
+p{
+	width:100px;
+	margin-left:90px;
+}
+#click, #slide {
+  padding: 5px;
+  border: solid 1px #c3c3c3;
+}
+[11:04 am, 05/08/2022] Dev Shree Bhati: table,th,td{
+	border: 1px solid black;
+	border-collapse:collapse;
+	padding:10px 10px;
+}
+table{
+	background-color:#985629;
+	border:none;
+	text-align:center;
+}
+input{
+	background-color:lightgrey;
+	border:none;
+	padding: 4px 4px;
+}
+button{
+	background-color:grey;
+	color:white;
+	border:none;
+	padding: 3px 3px;
+}
+h1{
+	text-align:center;
+	font-family:calibri;
+}
+.blue{
+	color:black;
+	background-color:orange;
+}
+p{
+	width:100px;
+	margin-left:90px;
+}
+#click, #slide {
+  padding: 5px;
+  border: solid 1px #c3c3c3;
+}
+ function itemTotal()
+{
+	var a,b,c,d,result;
+	
+	a = document.getElementById("item1").value;
+	b = document.getElementById("item2").value;
+	c = document.getElementById("item3").value;
+	d = document.getElementById("item4").value;
+	
+	result = Number(a) + Number(b) + Number (c) + Number (d);
+	
+	document.getElementById("demo").innerHTML = result;
+}
+
+function discountTotal()
+{
+	var x,resut;
+	
+	x = document.getElementById("demo").innerHTML;
+	
+	if( x >= 10000 )
+	{
+		result = Number(x)*20/100;
+	}
+	else
+	{
+		result = Number(x)*10/100;
+	}
+	
+	document.getElementById("demo1").innerHTML = result;
+}
+
+function afterDiscountTotal()
+{
+	var x,resut;
+	
+	x = document.getElementById("demo").innerHTML;
+	y = document.getElementById("demo1").innerHTML;
+	
+	
+	result = Number(x) - Number (y);
+	
+	document.getElementById("demo2").innerHTML = result;
+}
+
+function sgstTotal()
+{
+	var x,resut;
+	
+	x = document.getElementById("demo2").innerHTML;
+	
+	result = Number(x)*5/100;
+	
+	document.getElementById("demo3").innerHTML = result;
+}
+
+function cgstTotal()
+{
+	var x,resut;
+	
+	x = document.getElementById("demo2").innerHTML;
+	
+	result = Number(x)*5/100;
+	
+	document.getElementById("demo4").innerHTML = result;
+}
+
+function finalTotal()
+{
+	var a,b,c,d,result;
+	
+	
+	a = document.getElementById("demo2").innerHTML;
+	b = document.getElementById("demo3").innerHTML;
+	c = document.getElementById("demo4").innerHTML;
+	
+	result = Number(a) + Number (b) + Number (c);
+	
+	document.getElementById("demo5").innerHTML = result;
+}
